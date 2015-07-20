@@ -5,7 +5,7 @@
 ## Moving parts
 
 - **Tessel app** [mintpeaks-tessel](/mihar/mintpeaks-tessel) - Node.js app for Tessel
-- **Node app** [mintpeaks](/mihar/mintpeaks)- Node.js app for streaming Tessel data (TCP socket, Express, Socket.io)
+- **Node app** [mintpeaks](/mihar/mintpeaks) - Node.js app for streaming Tessel data (TCP socket, Express, Socket.io)
 
 This simple app displays the real-time temperature and humidity from my apartment.
 
