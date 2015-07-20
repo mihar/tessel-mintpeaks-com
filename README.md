@@ -1,10 +1,11 @@
-# mintpeaks-com
-mintpeaks is my personal home control and information site, powered by Node and tessel.io
+# Mintpeaks.com
+
+[mintpeaks.com](http://mintpeaks.com) is my personal home control and information site, powered by Node and tessel.io
 
 ## Moving parts
 
-* Tessel app [mintpeaks-tessel](/mihar/mintpeaks-tessel) - Node.js app for Tessel
-* Node app for streaming Tessel data [mintpeaks](/mihar/mintpeaks) - Node.js app (TCP socket, Express, Socket.io)
+- **Tessel app** [mintpeaks-tessel](/mihar/mintpeaks-tessel) - Node.js app for Tessel
+- **Node app** [mintpeaks](/mihar/mintpeaks)- Node.js app for streaming Tessel data (TCP socket, Express, Socket.io)
 
 This simple app displays the real-time temperature and humidity from my apartment.
 
