@@ -7,7 +7,7 @@
     <script type="text/javascript">
       var round_to_one = function(n) { return Math.round(n * 10) / 10; };
 
-      var socket = io('http://pozojcek.pozoj.si:3000');
+      var socket = io('http://mintpeaks.com:3000');
 
       socket.on('connect', function() {
         document.getElementById('disconnected').style.display = 'none';
