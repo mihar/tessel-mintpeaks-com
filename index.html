@@ -29,8 +29,8 @@
       })
 
       socket.on('received_data', function(data) {
-        document.getElementById('temperature_reading').innerHTML = data.temperature.toFixed(1);
-        document.getElementById('humidity_reading').innerHTML = data.humidity.toFixed(1);
+        document.getElementById('temperature_reading').innerHTML = Number(data.temperature).toFixed(1);
+        document.getElementById('humidity_reading').innerHTML = Number(data.humidity).toFixed(1);
       });
     </script>
     <style>
