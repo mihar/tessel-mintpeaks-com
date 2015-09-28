@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
     <script type="text/javascript">
-      var round_to_one = function(n) { return Math.round(n * 10) / 10; };
-
       var socket = io('http://mintpeaks.com:3000');
 
       socket.on('connect', function() {
@@ -14,12 +12,25 @@
         document.getElementById('connected').style.display = 'block';
       });
 
-      socket.on('received_data', function(data) {
-        document.getElementById('temperature_reading').innerHTML = round_to_one(data.temperature);
-        document.getElementById('humidity_reading').innerHTML = round_to_one(data.humidity);
+      socket.on('heartbeat', function(data) {
+        // Because we can be connected to the socket.io server, but the tessel itself isn't
+        // we show this is the case.
+        if (data.tessel) {
+          document.getElementById('tessel_disconnected').style.display = 'none';
+        }
+        else {
+          document.getElementById('tessel_disconnected').style.display = 'inline';
+        }
+
+        // Pulse the dot on heartbeat so we know we're alive.
         var span = document.getElementById('connected').getElementsByTagName('span')[0];
-        span.style.visibility = 'hidden';
-        setTimeout(function() { span.style.visibility = 'visible'; }, 500);
+        span.style.visibility = 'visible';
+        setTimeout(function() { span.style.visibility = 'hidden'; }, 500);
+      })
+
+      socket.on('received_data', function(data) {
+        document.getElementById('temperature_reading').innerHTML = data.temperature.toFixed(1);
+        document.getElementById('humidity_reading').innerHTML = data.humidity.toFixed(1);
       });
     </script>
     <style>
@@ -75,9 +86,13 @@
         float: right;
         padding-right: 25px;
       }
+      footer a {
+        color: #334849;
+      }
       #connected { display: none; }
-      #connected span { color: green; }
+      #connected span { color: green; visibility: hidden; }
       #disconnected span { color: red; }
+      #tessel_disconnected { display: none;}
     </style>
   </head>
   <body>
@@ -95,8 +110,15 @@
     </div>
     <footer>
       <div class="status">
-        <div id="disconnected"><span>&#9679;</span> Disconnected</div>
-        <div id="connected"><span>&#9679;</span> Connected</div>
+        <div id="disconnected">
+          <span>&#9679;</span>
+          Disconnected
+        </div>
+        <div id="connected">
+          <span>&#9679;</span>
+          Connected
+          <small id="tessel_disconnected">Tessel disconnected</small>
+        </div>
       </div>
       <div class="author">
         Built by
