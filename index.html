@@ -3,6 +3,7 @@
   <head>
     <title>Mint Peaks</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
     <script type="text/javascript">
       var socket = io('http://mintpeaks.com:3000');
@@ -29,8 +30,13 @@
       })
 
       socket.on('received_data', function(data) {
-        document.getElementById('temperature_reading').innerHTML = Number(data.temperature).toFixed(1);
-        document.getElementById('humidity_reading').innerHTML = Number(data.humidity).toFixed(1);
+        var temperature = Number(data.temperature).toFixed(1);
+        var humidity = Number(data.humidity).toFixed(1);
+
+        document.title = 'Mint Peaks (' + temperature + '°C/' + humidity + '%)';
+
+        document.getElementById('temperature_reading').innerHTML = temperature;
+        document.getElementById('humidity_reading').innerHTML = humidity;
       });
     </script>
     <style>
@@ -44,30 +50,31 @@
           font-weight: normal;
           font-style: normal;
       }
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
       body {
         background: #ddf6f7;
         font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
         font-weight: 300;
-        color: rgba(0,0,0,0.7);
+        color: rgba(0, 0, 0, 0.7);
       }
       .data {
-        margin: 200px auto;
         text-align: center;
-        font-size: 96px;
-        width: 875px;
+        font-size: 6em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
       }
-      .temperature, .humidity {
-        width: 400px;
-      }
-      .temperature {
-        float: left;
-      }
-      .humidity {
-        float: right;
+      .reading {
+        padding: 5% 8%;
       }
       .icon {
         font-family: 'entypo';
-        color: #fff;
+        color: rgba(0, 0, 0, 0.1);
         font-size: 72px;
       }
       footer {
@@ -75,7 +82,7 @@
         bottom: 25px;
         left: 0px;
         width: 100%;
-        font-size: 16px;
+        font-size: 1em;
         opacity: 0.5;
       }
       footer .status {
@@ -93,16 +100,47 @@
       #connected span { color: green; visibility: hidden; }
       #disconnected span { color: red; }
       #tessel_disconnected { display: none;}
+
+      @media only screen and (min-width: 1600px) {
+          /* big screens */
+          .data {
+            font-size: 9em;
+          }
+      }
+
+      @media only screen and (max-width: 767px) {
+          /* phones */
+          .data {
+            font-size: 4em;
+          }
+
+          footer {
+            text-align: center;
+            font-size: 0.9em;
+          }
+
+          footer .status, footer .author {
+            float: none;
+            padding: 0.2em 0;
+          }
+      }
+
+      @media only screen and (max-width: 767px) and (orientation: portrait) {
+        /* portrait phones */
+        .data {
+          flex-direction: column;
+        }
+      }
     </style>
   </head>
   <body>
     <div class='data'>
-      <div class='temperature'>
+      <div class='reading temperature'>
         <div class='icon'>📿</div>
         <span id="temperature_reading">0.00</span>
         °C
       </div>
-      <div class='humidity'>
+      <div class='reading humidity'>
         <div class='icon'>💦</div>
         <span id="humidity_reading">0.00</span>
         %
