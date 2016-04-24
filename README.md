@@ -28,3 +28,9 @@ Because the Tessel gets warm when running it can skew the measurements. I solved
 Here's how it looks:
 
 ![](http://mintpeaks.com/assets/tessel-cables.jpg)
+
+### Troubleshooting
+
+I was not able to get this running on Tessel 1, since their WiFi module couldn't handle sending data for more than a couple of hours before freezing completely.
+
+Tessel 2 seems to work great so far.
