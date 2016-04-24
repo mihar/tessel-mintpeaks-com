@@ -2,6 +2,8 @@
 
 [mintpeaks.com](http://mintpeaks.com) is my personal home control and information site, powered by Node and tessel.io
 
+![](http://mintpeaks.com/assets/mintpeakscom.png)
+
 ## Moving parts
 
 - **Tessel app** [mintpeaks-tessel](https://github.com/mihar/mintpeaks-tessel) - Node.js app for Tessel
