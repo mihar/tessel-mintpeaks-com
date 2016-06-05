@@ -35,3 +35,11 @@ Here's how it looks:
 I was not able to get this running on Tessel 1, since their WiFi module couldn't handle sending data for more than a couple of hours before freezing completely.
 
 Tessel 2 seems to work great so far.
+
+## Alexa skill
+
+If you happen to own any of the Amazon devices that support Alexa, you can ask for all of this climate information with your voice.
+
+[Watch the video](https://www.youtube.com/watch?v=h8MDnrGrJWE) to see it in action:
+
+[![Demo of Mintpeaks Alexa Skill](http://i.imgur.com/I7QyjIZ.gif)](https://www.youtube.com/watch?v=h8MDnrGrJWE)
