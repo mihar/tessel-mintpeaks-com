@@ -8,6 +8,7 @@
 
 - **Tessel app** [mintpeaks-tessel](https://github.com/mihar/mintpeaks-tessel) - Node.js app for Tessel
 - **Node app** [mintpeaks](https://github.com/mihar/mintpeaks) - Node.js app for streaming Tessel data (TCP socket, Express, Socket.io)
+- **Alexa Skill** [mintpeaks-alexa-skill](https://github.com/mihar/mintpeaks-alexa-skill) - Alexa skill to get climate data by just asking
 
 This simple app displays the real-time temperature and humidity from my apartment.
 
