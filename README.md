@@ -1,4 +1,4 @@
-# Mintpeaks.com
+# Tessel.Mintpeaks.com
 
 [mintpeaks.com](http://mintpeaks.com) is my personal home control and information site, powered by Node and tessel.io
 
